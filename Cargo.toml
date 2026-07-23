@@ -1,0 +1,28 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/nauarchos-crd",
+    "crates/nauarchos-operator",
+]
+default-members = [
+    "crates/nauarchos-crd",
+    "crates/nauarchos-operator",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/DataKnifeAI/nauarchos"
+authors = ["DataKnifeAI"]
+
+[workspace.dependencies]
+nauarchos-crd = { path = "crates/nauarchos-crd" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+schemars = "0.8"
+thiserror = "2"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+anyhow = "1"

@@ -1,0 +1,17 @@
+[package]
+name = "nauarchos-operator"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Nauarchos Kubernetes operator (bootstrap stub)"
+
+[[bin]]
+name = "nauarchos-operator"
+path = "src/main.rs"
+
+[dependencies]
+nauarchos-crd = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }

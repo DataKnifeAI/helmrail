@@ -1,0 +1,58 @@
+# Conceptual examples for review — CRDs not installed until M1.
+# apiVersion/kind match docs/CRDS.md
+---
+apiVersion: nauarchos.dataknife.ai/v1alpha1
+kind: SandboxProfile
+metadata:
+  name: restricted
+spec:
+  allowDNS: true
+  egress:
+    - name: https-apis
+      toCIDRs: ["0.0.0.0/0"]
+      ports: [{ port: 443, protocol: TCP }]
+    - name: cluster-vllm
+      toNamespace: inference
+      ports: [{ port: 8000, protocol: TCP }]
+---
+apiVersion: nauarchos.dataknife.ai/v1alpha1
+kind: DependencyBundle
+metadata:
+  name: cluster-vllm-egress
+spec:
+  env:
+    - name: OPENAI_BASE_URL
+      value: http://vllm.inference.svc.cluster.local:8000/v1
+---
+apiVersion: nauarchos.dataknife.ai/v1alpha1
+kind: AgentClass
+metadata:
+  name: hermes-cluster-vllm
+spec:
+  runtime: hermes
+  model:
+    provider: vllm
+    baseUrl: http://vllm.inference.svc.cluster.local:8000/v1
+    name: hermes3:8b
+  sandboxRef: restricted
+  dependencyRefs:
+    - cluster-vllm-egress
+---
+apiVersion: nauarchos.dataknife.ai/v1alpha1
+kind: AgentFleet
+metadata:
+  name: devops
+spec:
+  classRef: hermes-cluster-vllm
+  replicas: 2
+---
+apiVersion: nauarchos.dataknife.ai/v1alpha1
+kind: AgentTask
+metadata:
+  name: example-ephemeral
+spec:
+  classRef: hermes-cluster-vllm
+  mode: ephemeral
+  ttlSecondsAfterFinished: 600
+  prompt: |
+    Summarize cluster health for namespace default.
