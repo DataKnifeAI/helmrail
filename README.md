@@ -1,5 +1,8 @@
 # Nauarchos
 
+![Nauarchos — Rust Kubernetes control plane for agent fleets](docs/assets/nauarchos-hero.jpg)
+
+
 **Ναύαρχος — fleet admiral.**
 
 Rust Kubernetes control plane for deploying and directing a **fleet of agents** with declared dependencies, sandbox profiles, and on-demand workers.
