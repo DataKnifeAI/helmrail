@@ -72,12 +72,20 @@ docs/
 
 ## Develop
 
+Requires Rust stable and a C linker (`gcc`/`clang`). CI uses `ubuntu-latest`.
+
 ```bash
-# Requires Rust stable
-cargo build
-cargo test
+make help    # targets
+make build
+make test
+make lint
+make ci      # fmt-check + clippy + test (local quality gate)
 ```
+
+CI mirrors the operator siblings ([windrose-operator](https://github.com/DataKnifeAI/windrose-operator)): separate **Lint** and **Tests** workflows that call `make vet` / `make test`.
+
+Review docs first: [PLAN.md](docs/PLAN.md) · [ARCHITECTURE.md](docs/ARCHITECTURE.md) · [CRDS.md](docs/CRDS.md)
 
 ## License
 
-MIT · DataKnifeAI
+Apache License 2.0 · DataKnifeAI

@@ -33,10 +33,10 @@ Fits DataKnife Greek naming:
 
 ### M0 — Bootstrap (this PR / repo)
 
-- [x] Repository, license, README
+- [x] Repository, Apache-2.0 license, README
 - [x] Architecture + CRD sketch
 - [x] Rust workspace skeleton (`nauarchos-crd`, `nauarchos-operator`)
-- [ ] CI (fmt, clippy, test)
+- [x] Makefile + CI (lint/test workflows, `make ci`)
 
 ### M1 — CRDs + empty reconciler
 
