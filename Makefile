@@ -1,5 +1,5 @@
 # Image URL for build/push targets (Harbor, same pattern as windrose/palworld operators)
-IMG ?= harbor.dataknife.net/library/nauarchos-operator:latest
+IMG ?= harbor.dataknife.net/library/helmrail-operator:latest
 
 VERSION ?= 0.1.0
 
@@ -44,7 +44,7 @@ ci: vet test ## Local quality gate (matches CI jobs)
 
 .PHONY: run
 run: ## Run operator stub locally
-	$(CARGO) run -p nauarchos-operator
+	$(CARGO) run -p helmrail-operator
 
 .PHONY: clean
 clean: ## Remove target/

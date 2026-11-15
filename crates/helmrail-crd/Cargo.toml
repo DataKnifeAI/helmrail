@@ -1,9 +1,9 @@
 [package]
-name = "nauarchos-crd"
+name = "helmrail-crd"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Nauarchos Kubernetes CRD types (v1alpha1 sketch)"
+description = "Helmrail Kubernetes CRD types (v1alpha1 sketch)"
 
 [dependencies]
 serde = { workspace = true }

@@ -1,4 +1,4 @@
-//! Provisional CRD shapes for Nauarchos.
+//! Provisional CRD shapes for Helmrail.
 //!
 //! These are serde models for design review. M1 will switch them to
 //! `kube::CustomResource` derives and generate installable CRD YAML.
@@ -6,7 +6,7 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-pub const API_GROUP: &str = "nauarchos.dataknife.ai";
+pub const API_GROUP: &str = "helmrail.dataknife.ai";
 pub const API_VERSION: &str = "v1alpha1";
 
 /// Supported runtime adapters.

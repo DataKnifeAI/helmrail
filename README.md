@@ -1,19 +1,21 @@
-# Nauarchos
+# Helmrail
 
-![Nauarchos — Rust Kubernetes control plane for agent fleets](docs/assets/nauarchos-hero.jpg)
+![Helmrail — Rust Kubernetes control plane for agent fleets](docs/assets/helmrail-hero.jpg)
 
 
-**Ναύαρχος — fleet admiral.**
+**Helmrail — the rail that steers the fleet.**
+
+Formerly **nauarchos**.
 
 Rust Kubernetes control plane for deploying and directing a **fleet of agents** with declared dependencies, sandbox profiles, and on-demand workers.
 
 | Sibling | Role |
 |---------|------|
-| [Enodios](https://github.com/DataKnifeAI/enodios) | Node/local Hermes + vLLM bootstrap |
-| [Dioptra](https://github.com/DataKnifeAI/dioptra) | Fleet status board (observe) |
-| **Nauarchos** | Fleet deploy + direct (command) |
+| [Coldberth](https://github.com/DataKnifeAI/coldberth) | Node/local Hermes + vLLM bootstrap |
+| [Fleetshade](https://github.com/DataKnifeAI/fleetshade) | Fleet status board (observe) |
+| **Helmrail** | Fleet deploy + direct (command) |
 
-Nauarchos does **not** replace [hermeum/hermes-agent-operator](https://github.com/hermeum/hermes-agent-operator). That operator provisions a single Hermes instance. Nauarchos sits above (and beside) runtime operators: classes, fleets, tasks, sandboxes, and dependency bundles.
+Helmrail does **not** replace [hermeum/hermes-agent-operator](https://github.com/hermeum/hermes-agent-operator). That operator provisions a single Hermes instance. Helmrail sits above (and beside) runtime operators: classes, fleets, tasks, sandboxes, and dependency bundles.
 
 ## Goals
 
@@ -40,7 +42,7 @@ Rust is a fit here (memory-safe long-lived controllers, solid `kube` ecosystem).
 GitOps / kubectl / API
          │
          ▼
-   Nauarchos operator (Rust / kube-rs)
+   Helmrail operator (Rust / kube-rs)
          │
          ├── AgentClass      (presets: model, sandbox, deps)
          ├── Agent           (long-lived worker)
@@ -52,7 +54,7 @@ GitOps / kubectl / API
    Runtime pods (Hermes, Cursor agents, custom images)
          │
          ▼
-   Inference (Enodios / cluster vLLM / external APIs)
+   Inference (Coldberth / cluster vLLM / external APIs)
 ```
 
 ## Docs
@@ -65,8 +67,8 @@ GitOps / kubectl / API
 
 ```
 crates/
-  nauarchos-crd/       # CRD types (kube-derive)
-  nauarchos-operator/  # controller binary
+  helmrail-crd/       # CRD types (kube-derive)
+  helmrail-operator/  # controller binary
 docs/
 ```
 

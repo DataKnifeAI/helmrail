@@ -1,6 +1,6 @@
 # CRD sketch (provisional)
 
-API group: `nauarchos.dataknife.ai`  
+API group: `helmrail.dataknife.ai`  
 Version: `v1alpha1`
 
 Names and fields will move during M1–M2; this is the contract for review.
@@ -10,7 +10,7 @@ Names and fields will move during M1–M2; this is the contract for review.
 Reusable preset. Instances should stay thin.
 
 ```yaml
-apiVersion: nauarchos.dataknife.ai/v1alpha1
+apiVersion: helmrail.dataknife.ai/v1alpha1
 kind: AgentClass
 metadata:
   name: hermes-cluster-vllm
@@ -37,7 +37,7 @@ spec:
 ## SandboxProfile
 
 ```yaml
-apiVersion: nauarchos.dataknife.ai/v1alpha1
+apiVersion: helmrail.dataknife.ai/v1alpha1
 kind: SandboxProfile
 metadata:
   name: restricted
@@ -64,7 +64,7 @@ spec:
 Declares *what* to attach; operator materializes *how*.
 
 ```yaml
-apiVersion: nauarchos.dataknife.ai/v1alpha1
+apiVersion: helmrail.dataknife.ai/v1alpha1
 kind: DependencyBundle
 metadata:
   name: cluster-vllm-egress
@@ -82,7 +82,7 @@ spec:
 Long-lived member of the fleet.
 
 ```yaml
-apiVersion: nauarchos.dataknife.ai/v1alpha1
+apiVersion: helmrail.dataknife.ai/v1alpha1
 kind: Agent
 metadata:
   name: devops-1
@@ -99,7 +99,7 @@ spec:
 Desired pool / director policy.
 
 ```yaml
-apiVersion: nauarchos.dataknife.ai/v1alpha1
+apiVersion: helmrail.dataknife.ai/v1alpha1
 kind: AgentFleet
 metadata:
   name: devops
@@ -114,7 +114,7 @@ spec:
 On-demand work → spawn or assign a worker.
 
 ```yaml
-apiVersion: nauarchos.dataknife.ai/v1alpha1
+apiVersion: helmrail.dataknife.ai/v1alpha1
 kind: AgentTask
 metadata:
   name: review-pr-123
@@ -127,17 +127,17 @@ spec:
   # later: result sink, callbacks, parent agent ref
 ```
 
-## Status conventions (for Dioptra)
+## Status conventions (for Fleetshade)
 
-All Nauarchos CRs should expose:
+All Helmrail CRs should expose:
 
 - `status.phase`: Pending | Running | Succeeded | Failed | Suspended
 - `status.conditions[]` with `Available` / `Degraded`
-- Labels: `nauarchos.dataknife.ai/class`, `nauarchos.dataknife.ai/fleet`, `nauarchos.dataknife.ai/runtime`
+- Labels: `helmrail.dataknife.ai/class`, `helmrail.dataknife.ai/fleet`, `helmrail.dataknife.ai/runtime`
 
 ## Mapping from hermes-agent-operator
 
-| hermeum | Nauarchos |
+| hermeum | Helmrail |
 |---------|-----------|
 | `HermesAgent` + `hermes.config.raw.model` | `AgentClass.spec.model` + hermes adapter |
 | `security.networkPolicy` | `SandboxProfile` |

@@ -3,9 +3,9 @@ FROM rust:1.87-bookworm AS builder
 WORKDIR /src
 COPY Cargo.toml Cargo.lock rust-toolchain.toml ./
 COPY crates ./crates
-RUN cargo build --release -p nauarchos-operator
+RUN cargo build --release -p helmrail-operator
 
 FROM gcr.io/distroless/cc-debian12:nonroot
-COPY --from=builder /src/target/release/nauarchos-operator /usr/local/bin/nauarchos-operator
+COPY --from=builder /src/target/release/helmrail-operator /usr/local/bin/helmrail-operator
 USER nonroot:nonroot
-ENTRYPOINT ["/usr/local/bin/nauarchos-operator"]
+ENTRYPOINT ["/usr/local/bin/helmrail-operator"]

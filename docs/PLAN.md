@@ -2,13 +2,13 @@
 
 ## Codename
 
-**Nauarchos** (ναύαρχος) — admiral of the fleet.
+**Helmrail** — control plane rail for the agent fleet.
 
 Fits DataKnife Greek naming:
 
-- **Enodios** — road / local Hermes+vLLM
-- **Dioptra** — survey / observe the fleet
-- **Nauarchos** — command / deploy and direct the fleet
+- **Coldberth** — road / local Hermes+vLLM
+- **Fleetshade** — survey / observe the fleet
+- **Helmrail** — command / deploy and direct the fleet
 
 ## Why Rust (and when not to)
 
@@ -27,7 +27,7 @@ Fits DataKnife Greek naming:
 2. Common options (model endpoint, sandbox profile, dependency bundles) are **typed CRD fields**
 3. Submit an `AgentTask` and get an **ephemeral worker** that runs and terminates
 4. Point model traffic at **in-cluster or network vLLM** without editing opaque blobs
-5. Dioptra can read Nauarchos status (labels/conditions) without a special protocol v1
+5. Fleetshade can read Helmrail status (labels/conditions) without a special protocol v1
 
 ## Milestones
 
@@ -35,7 +35,7 @@ Fits DataKnife Greek naming:
 
 - [x] Repository, Apache-2.0 license, README
 - [x] Architecture + CRD sketch
-- [x] Rust workspace skeleton (`nauarchos-crd`, `nauarchos-operator`)
+- [x] Rust workspace skeleton (`helmrail-crd`, `helmrail-operator`)
 - [x] Makefile + CI (lint/test workflows, `make ci`)
 
 ### M1 — CRDs + empty reconciler
@@ -55,7 +55,7 @@ Fits DataKnife Greek naming:
 
 - [ ] `runtime: hermes` creates/owns a child `HermesAgent` **or** minimal Hermes Pod
 - [ ] Wire `baseUrl` to cluster vLLM Service
-- [ ] Document Enodios as out-of-cluster inference option
+- [ ] Document Coldberth as out-of-cluster inference option
 
 ### M4 — Fleet + on-demand tasks
 
@@ -69,7 +69,7 @@ Fits DataKnife Greek naming:
 - [ ] Bundles: secret/env, sidecar (SearXNG-like), external service ref
 - [ ] Example presets: `hermes-vllm-cluster`, `hermes-cloud-api`
 - [ ] Helm chart or kustomize install
-- [ ] Dioptra integration notes (label contract)
+- [ ] Fleetshade integration notes (label contract)
 
 ### Later
 
@@ -82,16 +82,16 @@ Fits DataKnife Greek naming:
 ## Non-goals (near term)
 
 - Rust rewrite of hermeum
-- Replacing Enodios install scripts
-- Building Dioptra inside this repo
+- Replacing Coldberth install scripts
+- Building Fleetshade inside this repo
 - Perfect multi-tenant SaaS
 
 ## Review checklist
 
 When reviewing this bootstrap, confirm:
 
-1. Codename and positioning vs Enodios / Dioptra / hermeum
+1. Codename and positioning vs Coldberth / Fleetshade / hermeum
 2. CRD split (class / agent / fleet / task / sandbox / deps)
 3. Hermes via adapter vs owning Pods day one
 4. Rust learning pace vs M1–M2 scope
-5. API group name: `nauarchos.dataknife.ai` (provisional)
+5. API group name: `helmrail.dataknife.ai` (provisional)
